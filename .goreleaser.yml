@@ -26,7 +26,7 @@ builds:
   binary: '{{ .ProjectName }}'
 
 archives:
-- format: binary
+- format: zip
   replacements:
       darwin: macOS
 

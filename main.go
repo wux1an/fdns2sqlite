@@ -95,4 +95,7 @@ func main() {
 		batch[i] = record
 	}
 	db.CreateInBatches(batch, len(batch))
+
+	absOutput, _ := filepath.Abs(output)
+	fmt.Printf("Saved to \"%s\".", absOutput)
 }

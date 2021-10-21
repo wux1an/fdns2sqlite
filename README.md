@@ -3,6 +3,11 @@ A tool that can convert fdns.json to sqlite3.
 
 # Usage
 ```
-fdns2sqlite.exe ./path/of/filename.json
+$ fdns2sqlite.exe ./path/of/filename.json
+Saved to "absolute/path/filename.sqlite3"
+
+$ fdns2sqlite.exe ./path/of/filename.json
+Saved to "absolute/path/filename-1.sqlite3"
+
+...
 ```
-The sqlite3 file will be saved to `filename.sqlite3` or `filename-1.sqlite3` ...

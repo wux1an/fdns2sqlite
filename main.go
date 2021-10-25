@@ -29,7 +29,7 @@ var (
 
 func main() {
 	// parse arg
-	if len(os.Args) < 2 {
+	if len(os.Args) < 2 || os.Args[1] == "-h" || os.Args[1] == "--help" {
 		fmt.Printf("Convert fdns.json to sqlite format. Large files will run slowly.\n"+
 			"Usage: %s fdns.json\n", filepath.Base(os.Args[0]))
 		return
@@ -51,6 +51,13 @@ func main() {
 		}
 	}
 
+	// read file
+	data, err := os.ReadFile(input)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
 	// init database
 	db, err := gorm.Open(sqlite.Open(output), &gorm.Config{})
 	if err != nil {
@@ -58,12 +65,6 @@ func main() {
 		return
 	}
 	_ = db.AutoMigrate(&Record{})
-
-	data, err := os.ReadFile(input)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
 
 	var (
 		lines       = strings.Split(strings.TrimSpace(string(data)), "\n")

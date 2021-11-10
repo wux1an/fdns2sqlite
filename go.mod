@@ -1,4 +1,4 @@
-module fdns2sqlite
+module github.com/wux1an/fdns2sqlite
 
 go 1.17
 
